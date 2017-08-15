@@ -1,0 +1,85 @@
+class user:
+   username= ''
+   pin = ''
+   deposit =0
+   norek =0
+
+
+   def setusername(self,a):
+       self.username = a
+
+   def  getusername(self):
+       return self.username
+
+   def setnorek(self,a):
+       self.norek = a
+
+   def getnorek(self):
+       return self.norek
+
+   def setpin(self, a):
+       self.pin = a
+
+   def getpin(self):
+       return self.pin
+
+   def setdeposit(self,a):
+       self.deposit =  a
+
+   def  getdeposit(self):
+       return self.deposit
+
+
+
+
+
+
+user1 = user()
+user1.setusername("tes")
+user1.setpin("1111")
+user1.setnorek("12345")
+
+user2 = user()
+user2.setusername("tes2")
+user2.setpin("2222")
+user2.setnorek("67890")
+
+count = 0
+
+username = raw_input("Masukkan Username: ")
+pin = raw_input("Masukkan Pin: ")
+if username == user1.getusername() and pin == user1.getpin():
+        print "1.Deposit"
+        print "2.withdrawal"
+        print "3.Transfer"
+        print "4.Cek Balance"
+        print "5,Keluar"
+
+        while count < 5:
+            pilihan = int(input("Masukkan pilihan: "))
+            if pilihan == 1:
+                deposito =int(input("Masukkan jumlah yang akan disimpan : "))
+                deposito1 = user1.getdeposit() + deposito
+                user1.setdeposit(deposito1)
+                print user1.getdeposit()
+            elif pilihan == 2:
+                withdrawal = int(input("Masukkan jumlah yang akan ditarik: "))
+                withdrawal1 = user1.getdeposit() - withdrawal
+                user1.setdeposit(withdrawal1)
+                print user1.getdeposit()
+            elif pilihan == 3:
+                ttujuan = raw_input ("Masukkan  No Rek yang dituju: ")
+                if ttujuan == user2.getnorek():
+                        transfer1 =0
+                        transfer = int(input("Masukkan jumlah yang akan ditransferkan: "))
+                        user2.setdeposit(transfer)
+                        transfer1 = user1.getdeposit() - transfer
+                        user1.setdeposit(transfer1)
+                else:
+                    print "No rek yang anda masukan salah"
+                print user1.getdeposit()
+            elif pilihan == "4":
+                print user1.getdeposit()
+            else:
+                break
+                count += 1
