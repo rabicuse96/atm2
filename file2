@@ -1,0 +1,97 @@
+class user:
+   username= ''
+   pin = ''
+   deposit =0
+   norek =0
+
+
+   def setusername(self,a):
+       self.username = a
+
+   def getusername(self):
+       return self.username
+
+   def setnorek(self,a):
+       self.norek = a
+
+   def getnorek(self):
+       return self.norek
+
+   def setpin(self, a):
+       self.pin = a
+
+   def getpin(self):
+       return self.pin
+
+   def setdeposit(self,a):
+       self.deposit =  a
+
+   def  getdeposit(self):
+       return self.deposit
+###########################################################
+user1 = user()
+user1.setusername("tes")
+user1.setpin("1111")
+user1.setnorek("12345")
+
+user2 = user()
+user2.setusername("tes2")
+user2.setpin("2222")
+user2.setnorek("67890")
+##########################################################
+count = 0
+
+def deposit(a):
+    user1.setdeposit(a)
+
+def withdrawal(a):
+    b = user1.getdeposit() - a
+    deposit(b)
+    return b
+
+def transfer(norek,a):
+        if norek == user2.getnorek():
+            b = user1.getdeposit() - a
+            deposit(b)
+            return b
+def menu():
+    print ("1.Deposit")
+    print ("2.withdrawal")
+    print ("3.Transfer")
+    print ("4.Cek Balance")
+    print ("5,Keluar")
+
+def atm(username,pin):
+    if username == user1.getusername() and pin == user1.getpin():
+        menu()
+        while count < 5:
+            pilihan = int(input("Masukkan pilihan: "))
+            if pilihan == 1:
+                    deposito = int(input("Masukkan jumlah yang akan disimpan : "))
+                    deposit(deposito)
+            elif pilihan == 2:
+                    withdrawal1 = int(input("Masukkan jumlah yang akan ditarik: "))
+                    print(withdrawal(withdrawal1))
+            elif pilihan == 3:
+                    ttujuan = input("Masukkan  No Rek yang dituju: ")
+                    transfer1 = int(input("Masukkan jumlah yang akan ditransferkan: "))
+                    transfer(ttujuan,transfer1)
+            elif pilihan == 4:
+                    print (user1.getdeposit())
+            else:
+                break
+
+
+username = input("Masukkan Username: ")
+pin = input("Masukkan Pin: ")
+atm(username,pin)
+
+
+
+
+
+
+
+
+
+
